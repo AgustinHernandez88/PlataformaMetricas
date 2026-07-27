@@ -1,55 +1,45 @@
-import path from "path";
-
-import { leerCSV } from "../utils/csvReader";
-
+import { Response } from "express";
 import { AuthRequest } from "../middleware/authMiddleware";
 
-import { Response } from "express";
+import { obtenerRutaCSV } from "../services/csvService";
+
+import { parsearCSV } from "../utils/parser";
 
 export function obtenerDashboard(
-    req: AuthRequest,
-    res: Response
-) {
 
-    const cliente = req.usuario.cliente;
+    req:AuthRequest,
 
-    const ruta = path.join(
+    res:Response
 
-        process.cwd(),
+){
 
-        "data",
+    const cliente=req.usuario.cliente;
 
-        "clientes",
+    const ruta=obtenerRutaCSV(cliente);
 
-        cliente,
+    try{
 
-        "historico.csv"
-
-    );
-
-    try {
-
-        const datos = leerCSV(ruta);
+        const csv=parsearCSV(ruta);
 
         return res.json({
 
-            ok: true,
+            ok:true,
 
-            filas: datos.length,
+            metadata:csv.metadata,
 
-            datos
+            filas:csv.mediciones.length
 
         });
 
     }
 
-    catch {
+    catch{
 
         return res.status(404).json({
 
-            ok: false,
+            ok:false,
 
-            mensaje: "CSV no encontrado"
+            mensaje:"No existe CSV"
 
         });
 
