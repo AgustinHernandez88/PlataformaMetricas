@@ -1,0 +1,16 @@
+# Dependencias
+node_modules/
+.pnpm-store/
+
+# Archivos de entorno / secretos
+.env
+.env.local
+
+# Builds de producción
+dist/
+build/
+
+# Logs y caché
+*.log
+npm-debug.log*
+.DS_Store
