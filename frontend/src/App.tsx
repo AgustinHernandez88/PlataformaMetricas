@@ -1,37 +1,8 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-import Login from "./pages/Login.jsx";
-import Dashboard from "./pages/Dashboard.jsx";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
+// @ts-ignore
+import Footer from './components/Footer';
 
-function App() {
-  return (
-    <BrowserRouter>
-
-      <Routes>
-
-        <Route
-          path="/"
-          element={<Login />}
-        />
-
-        <Route
-          path="/dashboard"
-          element={
-
-        <ProtectedRoute>
-
-            <Dashboard/>
-
-        </ProtectedRoute>
-
-    }
-        />
-
-      </Routes>
-
-    </BrowserRouter>
-  );
-}
-
-export default App;
+export default function App() { return <BrowserRouter><Routes><Route path="/" element={<Login/>}/><Route path="/dashboard" element={<ProtectedRoute><Dashboard/></ProtectedRoute>}/><Route path="*" element={<Login/>}/></Routes></BrowserRouter>; }

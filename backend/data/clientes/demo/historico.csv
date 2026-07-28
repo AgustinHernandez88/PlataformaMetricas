@@ -1,0 +1,9 @@
+Gateway	Demo Energy Gateway
+Device Type	iEM3250
+Logging Interval	15
+Timestamp	Voltage	Current	Power	Energy
+2026-07-28 08:00	221.4	10.2	2.25	1240.1
+2026-07-28 08:15	222.1	10.7	2.38	1240.7
+2026-07-28 08:30	220.8	11.1	2.45	1241.3
+2026-07-28 08:45	221.7	10.9	2.41	1241.9
+2026-07-28 09:00	222.4	11.5	2.56	1242.6

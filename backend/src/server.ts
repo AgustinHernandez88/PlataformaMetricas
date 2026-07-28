@@ -1,30 +1,11 @@
 import express from "express";
 import cors from "cors";
-import dashboardRoutes from "./routes/dashboardRoutes";
+import { env } from "./config/env";
 import authRoutes from "./routes/authRoutes";
-
+import dashboardRoutes from "./routes/dashboardRoutes";
 const app = express();
-
-app.use(cors());
-
-app.use(express.json());
-
-app.use("/api/auth", authRoutes);
-
-app.use("/api/dashboard", dashboardRoutes);
-
-app.get("/", (_, res) => {
-
-    res.json({
-
-        mensaje: "API funcionando"
-
-    });
-
-});
-
-app.listen(3000, () => {
-
-    console.log("Servidor iniciado");
-
-});
+app.use(cors({ origin: env.corsOrigin.split(",").map((item) => item.trim()) }));
+app.use(express.json({ limit: "20kb" }));
+app.get("/health", (_, res) => res.json({ ok: true }));
+app.use("/api/auth", authRoutes); app.use("/api/dashboard", dashboardRoutes);
+app.listen(env.port, () => console.log(`API lista en puerto ${env.port}`));
