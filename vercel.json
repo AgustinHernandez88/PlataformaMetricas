@@ -1,12 +1,5 @@
 {
   "version": 2,
-
-  "functions": {
-    "api/index.ts": {
-      "runtime": "@vercel/node"
-    }
-  },
-
   "rewrites": [
     {
       "source": "/api/(.*)",
@@ -14,7 +7,7 @@
     },
     {
       "source": "/(.*)",
-      "destination": "/frontend/dist/$1"
+      "destination": "/"
     }
   ]
 }
