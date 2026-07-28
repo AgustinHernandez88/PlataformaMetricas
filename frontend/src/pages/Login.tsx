@@ -35,7 +35,7 @@ export default function Login() {
       <form className="login-card" onSubmit={submit}>
         <div className="brand">
           <img 
-            src="/images/Logo.jpg" 
+            src="/images/Logo.png" 
             alt="Logo de la empresa" 
             style={{ maxHeight: "48px", width: "auto" }}
           />
